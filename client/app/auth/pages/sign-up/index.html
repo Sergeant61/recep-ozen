@@ -1,0 +1,34 @@
+<template name="authPageSignUp">
+  <div class="container authPageSignUp">
+    <div class="my-5">{{> onboardingComponentProgress step1='on' step2='off' step3='off'}}</div>
+
+    <div class="d-grid gap-3 justify-content-center">
+      <div class="mb-5 text-center">
+        <h1 class="fw-bolder display-3">{{_ 'auth.pages.authPageSignUp' 'title'}}</h1>
+        <span class="display-6">{{_ 'auth.pages.authPageSignUp' 'subTitle'}}</span>
+      </div>
+
+      <form class="row gap-3" data-cy="form">
+        <div class="col-12">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="fullname" placeholder=" " required data-cy="fullname">
+            <label for="fullname">{{_ 'auth.pages.authPageSignUp' 'fullname'}}</label>
+            <div class="invalid-feedback"></div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-floating">
+            <input type="email" class="form-control" id="emailAddress" placeholder=" " required data-cy="emailAddress">
+            <label for="emailAddress">{{_ 'auth.pages.authPageSignUp' 'emailAddress'}}</label>
+            <div class="invalid-feedback"></div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-lg btn-primary w-100" data-cy="submit">{{_ 'globals' 'next'}} <i class="fad fa-chevron-right ms-1 fa-fw"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
