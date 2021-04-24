@@ -11,6 +11,5 @@ new ValidatedMethod({
     if (user) {
       Accounts.sendResetPasswordEmail(user._id, data.email)
     }
-
   }
 });

@@ -1,3 +1,5 @@
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+
 Template.adminLayoutDefault.events({
   'click #sidebarCollapse': function (event, template) {
     $('#sidebar, #content').toggleClass('active');

@@ -1,3 +1,5 @@
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+
 Accounts.onResetPasswordLink(function (token, done) {
   FlowRouter.go(`/auth/forgot-password-verify?token=${token}`);
 });

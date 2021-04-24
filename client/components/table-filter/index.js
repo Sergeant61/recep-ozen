@@ -1,4 +1,4 @@
-
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import Lightpick from 'lightpick';
 import 'lightpick/css/lightpick.css';
 

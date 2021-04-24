@@ -1,3 +1,5 @@
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+
 const routesAuth = FlowRouter.group({
   prefix: '/admin',
   name: 'admin',
@@ -7,6 +9,6 @@ const routesAuth = FlowRouter.group({
 routesAuth.route('/dashboard', {
   name: 'admin.dashboard',
   action: function (params, queryParams) {
-    BlazeLayout.render('adminLayoutDefault', { page: 'adminPageDashboard' });
+    this.render('adminLayoutDefault', { page: 'adminPageDashboard' });
   }
 });

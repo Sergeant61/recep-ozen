@@ -1,21 +1,12 @@
+const slugify = require('slugify');
+
 Migrations.add({
   version: 2,
-  name: 'Admin user',
+  name: 'Kategoriler oluşturuluyor',
   up: function () {
-    const userId = Accounts.createUser({
-      email: 'merhaba@bordo.io',
-      password: '123',
-      profile: {
-        fullname: 'Bet Admin'
-      }
+    const categories = JSON.parse(Assets.getText('seeds/categories.json'));
+    categories.forEach(category => {
+      Categories.insert(category);
     });
-
-    Meteor.users.update({ _id: userId }, {
-      $set: {
-        'profile.isAdmin': true,
-      }
-    })
-
-    Roles.addUsersToRoles(userId, 'roles.admin', null);
   }
 });

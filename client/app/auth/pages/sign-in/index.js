@@ -1,3 +1,5 @@
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+
 Template.authPageSignIn.events({
   'submit form': function (event, template) {
     event.preventDefault();
