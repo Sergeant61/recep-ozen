@@ -1,9 +1,8 @@
 Template.componentCategories.onCreated(function () {
   this.subscription = null;
 
-
   this.subscription?.stop();
-  this.subscription = Meteor.subscribe('categories');
+  this.subscription = Meteor.subscribe('publish.categories');
 })
 
 Template.componentCategories.onDestroyed(function() {

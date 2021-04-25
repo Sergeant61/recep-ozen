@@ -3,6 +3,17 @@
 
 $font-family-base: "Overpass";
 
+//-----------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman",
+    serif /*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+}
+
 $primary: #12a4e7;
 $secondary: #6c757d;
 // $success:#9BBB59;
@@ -12,7 +23,7 @@ $secondary: #6c757d;
 // $light:#f8f9fa;
 // $dark:#343434;
 
-$themeCustomRadius: 15px;
+$themeCustomRadius: 10px;
 
 $utilities: (
   "opacity": (
@@ -73,49 +84,52 @@ img {
 // *------------------------
 
 // Theme glass - START
-.swal2-popup {
-  border-radius: $themeCustomRadius !important;
-  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1), 0px 2px 6px rgba(0, 0, 0, 0.04),
-    0px 0px 1px rgba(0, 0, 0, 0.04);
-  transition: 0.15s all ease;
-}
+// .swal2-popup {
+//   border-radius: $themeCustomRadius !important;
+//   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1), 0px 2px 6px rgba(0, 0, 0, 0.04),
+//     0px 0px 1px rgba(0, 0, 0, 0.04);
+//   transition: 0.15s all ease;
+// }
 
-.swal2-styled.swal2-confirm {
-  color: #fff !important;
-  background-color: var(--bs-primary) !important;
-  border-radius: 28px !important;
-  min-width: 150px;
-}
-.swal2-styled.swal2-cancel {
-  color: #fff !important;
-  background-color: var(--bs-danger) !important;
-  border-radius: 28px !important;
-  min-width: 150px;
-}
-.swal2-container {
-  &.swal2-backdrop-show,
-  &.swal2-noanimation {
-    background: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-  }
-}
+// .swal2-styled.swal2-confirm {
+//   color: #fff !important;
+//   background-color: var(--bs-primary) !important;
+//   border-radius: 28px !important;
+//   min-width: 150px;
+// }
 
-.modal-content {
-  border: unset;
-  border-radius: $themeCustomRadius;
-  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1), 0px 2px 6px rgba(0, 0, 0, 0.04),
-    0px 0px 1px rgba(0, 0, 0, 0.04);
-}
-.modal-backdrop {
-  background: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  &.show {
-    opacity: unset;
-  }
-}
+// .swal2-styled.swal2-cancel {
+//   color: #fff !important;
+//   background-color: var(--bs-danger) !important;
+//   border-radius: 28px !important;
+//   min-width: 150px;
+// }
+
+// .swal2-container {
+//   &.swal2-backdrop-show,
+//   &.swal2-noanimation {
+//     background: rgba(255, 255, 255, 0);
+//     backdrop-filter: blur(14px);
+//     -webkit-backdrop-filter: blur(14px);
+//   }
+// }
+
+// .modal-content {
+//   border: unset;
+//   border-radius: $themeCustomRadius;
+//   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1), 0px 2px 6px rgba(0, 0, 0, 0.04),
+//     0px 0px 1px rgba(0, 0, 0, 0.04);
+// }
+
+// .modal-backdrop {
+//   background: rgba(255, 255, 255, 0.55);
+//   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+//   backdrop-filter: blur(14px);
+//   -webkit-backdrop-filter: blur(14px);
+//   &.show {
+//     opacity: unset;
+//   }
+// }
 // Theme glass - END
 
 .brd-vertical-scroll-tabs {
@@ -128,15 +142,4 @@ img {
   .nav-link {
     white-space: nowrap !important;
   }
-}
-
-//-----------------------
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Playfair Display", Georgia, "Times New Roman",
-    serif /*rtl:Amiri, Georgia, "Times New Roman", serif*/;
 }

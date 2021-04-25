@@ -13,6 +13,7 @@ blaze-html-templates@1.2.0
 blaze-tools@1.1.1
 boilerplate-generator@1.7.1
 bordo:auto-dates@0.0.1
+bordo:last-edit-user@0.0.1
 bordo:loading@0.0.1
 bordo:loading-line@0.0.1
 bordo:loading-section@0.0.1

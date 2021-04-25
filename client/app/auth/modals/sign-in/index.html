@@ -1,0 +1,38 @@
+<template name="authModalSignIn">
+  <div class="modal fade" id="brdSignInModal" tabindex="-1" aria-labelledby="brdSignInModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <div class="d-flex flex-column">
+            <h5 class="modal-title" id="brdSignInModalLabel">Sign in</h5>
+            <span>Log in to your account.</span>
+          </div>
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form class="brdSignInModal">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="emailAddress" placeholder="name@example.com">
+              <label for="emailAddress">Email address</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="password" placeholder="*****">
+              <label for="password">Password</label>
+            </div>
+
+            <div class="d-grid gap-2 py-5">
+              <button class="btn btn-primary text-white" style="height: 56px;" type="submit">Login</button>
+            </div>
+
+            <a data-cy="brd-test-forgot-password" href="/auth/forgot-password" class="text-muted pt-3 text-decoration-none">Forgot password?</a>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>

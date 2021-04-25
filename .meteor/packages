@@ -49,5 +49,7 @@ bordo:auto-dates
 bordo:loading-section
 bordo:loading-line
 bordo:slugify
+bordo:last-edit-user
+
 raix:handlebar-helpers
 montiapm:agent

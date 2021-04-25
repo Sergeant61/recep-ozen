@@ -1,50 +1,62 @@
 [
   {
     "title": "World",
-    "language": "en"
+    "language": "en",
+    "status": "visible"
   },
   {
     "title": "U.S.",
-    "language": "en"
+    "language": "en",
+    "status": "visible"
   },
   {
     "title": "Technology",
-    "language": "en"
+    "language": "en",
+    "status": "visible"
   },
   {
     "title": "Design",
-    "language": "en"
+    "language": "en",
+    "status": "visible"
   },
   {
     "title": "Culture",
-    "language": "en"
+    "language": "en",
+    "status": "visible"
   },
   {
     "title": "Business",
-    "language": "en"
+    "language": "en",
+    "status": "visible"
   },
   {
     "title": "Politics",
-    "language": "en"
+    "language": "en",
+    "status": "visible"
   },
   {
     "title": "Opinion",
-    "language": "en"
+    "language": "en",
+    "status": "visible"
   },
   {
     "title": "Science",
-    "language": "en"
+    "language": "en",
+    "status": "visible"
   },
   {
     "title": "Health",
-    "language": "en"
+    "language": "en",
+    "status": "visible"
   },
   {
     "title": "Style",
-    "language": "en"
+    "language": "en",
+    "status": "visible"
   },
   {
     "title": "Travel",
-    "language": "en"
+    "language": "en",
+    "status": "visible"
   }
 ]
