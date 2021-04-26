@@ -10,7 +10,7 @@ const routes = FlowRouter.group({
 routes.route('/sign-up', {
   name: 'auth.signUp',
   action: function (params, queryParams) {
-    this.render('layoutDefault', { page: 'authPageSignUp' });
+    this.render('authLayoutDefault', { page: 'authPageSignUp' });
   }
 });
 

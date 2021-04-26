@@ -1,34 +1,47 @@
 <template name="authPageSignUp">
-  <div class="container authPageSignUp">
-    <div class="my-5">{{> onboardingComponentProgress step1='on' step2='off' step3='off'}}</div>
+  <div class="authPageSignUp container-fluid bg-secondary">
+    <div class="d-flex flex-column flex-fill align-items-center h-100">
 
-    <div class="d-grid gap-3 justify-content-center">
-      <div class="mb-5 text-center">
-        <h1 class="fw-bolder display-3">{{_ 'auth.pages.authPageSignUp' 'title'}}</h1>
-        <span class="display-6">{{_ 'auth.pages.authPageSignUp' 'subTitle'}}</span>
+      <div class="form-sign">
+        <h1 class="fw-bolder display-3">Sign up</h1>
+        <p class="pb-3">Create a new account.</p>
+
+        <form class="brd-loading-section">
+          <div class="form-floating">
+            <input type="text" class="form-control brd-border-bottom-unset" id="name" placeholder="name">
+            <label for="name">Name</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="text" class="form-control brd-border-bottom-unset brd-border-top-unset" id="lastName" placeholder="lastName">
+            <label for="lastName">Last name</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="email" class="form-control brd-border-bottom-unset brd-border-top-unset" id="emailAddress" placeholder="name@example.com">
+            <label for="emailAddress">Email address</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="password" class="form-control brd-border-bottom-unset brd-border-top-unset" id="password" placeholder="*****">
+            <label for="password">Password</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="password" class="form-control brd-border-top-unset" id="passwordAgain" placeholder="*****">
+            <label for="passwordAgain">Password Again</label>
+          </div>
+
+          <div class="d-grid gap-2 py-4">
+            <button class="btn btn-primary btn-lg" type="submit">Sign up</button>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <a href="/auth/sign-in" class="text-black-50 pt-3">Sign in</a>
+          </div>
+        </form>
       </div>
 
-      <form class="row gap-3" data-cy="form">
-        <div class="col-12">
-          <div class="form-floating">
-            <input type="text" class="form-control" id="fullname" placeholder=" " required data-cy="fullname">
-            <label for="fullname">{{_ 'auth.pages.authPageSignUp' 'fullname'}}</label>
-            <div class="invalid-feedback"></div>
-          </div>
-        </div>
-
-        <div class="col-12">
-          <div class="form-floating">
-            <input type="email" class="form-control" id="emailAddress" placeholder=" " required data-cy="emailAddress">
-            <label for="emailAddress">{{_ 'auth.pages.authPageSignUp' 'emailAddress'}}</label>
-            <div class="invalid-feedback"></div>
-          </div>
-        </div>
-
-        <div class="col-12">
-          <button type="submit" class="btn btn-lg btn-primary w-100" data-cy="submit">{{_ 'globals' 'next'}} <i class="fad fa-chevron-right ms-1 fa-fw"></i></button>
-        </div>
-      </form>
     </div>
   </div>
 </template>
