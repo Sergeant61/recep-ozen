@@ -1,62 +1,79 @@
 [
   {
-    "title": "World",
-    "language": "en",
+    "data": {
+      "en": { "title": "Word" },
+      "tr": { "title": "Dünya" }
+    },
     "status": "visible"
   },
   {
-    "title": "U.S.",
-    "language": "en",
+    "data": {
+      "en": { "title": "Technology" },
+      "tr": { "title": "Teknoloji" }
+    },
     "status": "visible"
   },
   {
-    "title": "Technology",
-    "language": "en",
+    "data": {
+      "en": { "title": "Design" },
+      "tr": { "title": "Tasarım" }
+    },
     "status": "visible"
   },
   {
-    "title": "Design",
-    "language": "en",
+    "data": {
+      "en": { "title": "Culture" },
+      "tr": { "title": "Kültür" }
+    },
     "status": "visible"
   },
   {
-    "title": "Culture",
-    "language": "en",
+    "data": {
+      "en": { "title": "Business" },
+      "tr": { "title": "İş" }
+    },
     "status": "visible"
   },
   {
-    "title": "Business",
-    "language": "en",
+    "data": {
+      "en": { "title": "Politics" },
+      "tr": { "title": "Politika" }
+    },
     "status": "visible"
   },
   {
-    "title": "Politics",
-    "language": "en",
+    "data": {
+      "en": { "title": "Opinion" },
+      "tr": { "title": "Düşünce" }
+    },
     "status": "visible"
   },
   {
-    "title": "Opinion",
-    "language": "en",
+    "data": {
+      "en": { "title": "Science" },
+      "tr": { "title": "Bilim" }
+    },
     "status": "visible"
   },
   {
-    "title": "Science",
-    "language": "en",
+    "data": {
+      "en": { "title": "Health" },
+      "tr": { "title": "Sağlık" }
+    },
     "status": "visible"
   },
   {
-    "title": "Health",
-    "language": "en",
+    "data": {
+      "en": { "title": "Style" },
+      "tr": { "title": "Stil" }
+    },
     "status": "visible"
   },
   {
-    "title": "Style",
-    "language": "en",
-    "status": "visible"
-  },
-  {
-    "title": "Travel",
-    "language": "en",
+    "data": {
+      "en": { "title": "Travel" },
+      "tr": { "title": "Seyehat" }
+    },
     "status": "visible"
   }
 ]

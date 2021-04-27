@@ -5,15 +5,18 @@ Template.authPageSignUp.events({
     event.preventDefault();
     LoadingSection.show(template, '.authPageSignUp');
 
-    const fullname = event.target.fullname.value;
+    const name = event.target.name.value;
+    const lastName = event.target.lastName.value;
     const emailAddress = event.target.emailAddress.value;
-    const password = Random.id();
+    const password = event.target.password.value;
+    const passwordAgain = event.target.passwordAgain.value;
 
     const obj = {
       email: emailAddress,
       password: password,
       profile: {
-        fullname: fullname
+        name: name,
+        lastName: lastName
       }
     };
 
@@ -24,23 +27,13 @@ Template.authPageSignUp.events({
         return;
       }
 
-      Meteor.call('onboarding.applications.create', {}, function (error, result) {
-        LoadingSection.hide(template, '.authPageSignUp');
+      const redirect = FlowRouter.getQueryParam('redirect');
 
-        if (error) {
-          ErrorHandler.show(error, template);
-          return;
-        }
-
-        const application = result.application;
-        const redirect = FlowRouter.getQueryParam('redirect');
-
-        if(redirect) {
-          FlowRouter.go(redirect);
-        } else {
-          FlowRouter.go('onboarding.plaidAccountConnect', {applicationId: application._id});
-        }
-      });
+      if (redirect) {
+        FlowRouter.go(redirect);
+      } else {
+        FlowRouter.go('public.home');
+      }
     });
   }
 });

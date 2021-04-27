@@ -10,7 +10,8 @@ Migrations.add({
       email: 'merhaba@bordo.io',
       password: '123',
       profile: {
-        fullname: 'Blog Admin'
+        name: 'Blog',
+        lastName: 'Admin'
       }
     });
 

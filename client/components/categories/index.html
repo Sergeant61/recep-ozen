@@ -1,11 +1,15 @@
 <template name="componentCategories">
-  <div class="container componentCategories">
-    <div class="nav-scroller py-1 mb-2">
-      <nav class="nav d-flex justify-content-between">
-        {{#each categories}}
-          <a class="p-2 link-secondary" href="/categories/{{slug}}">{{title}}</a>
-        {{/each}}
-      </nav>
+  {{#let _categories=(state.get 'categories')}}
+
+    <div class="container componentCategories">
+      <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+          {{#each _categories}}
+            <a class="p-2 link-secondary" href="/categories/{{_id}}">{{data.title}} </a>
+          {{/each}}
+        </nav>
+      </div>
     </div>
-  </div>
+
+  {{/let}}
 </template>

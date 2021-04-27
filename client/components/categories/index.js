@@ -1,16 +1,32 @@
 Template.componentCategories.onCreated(function () {
-  this.subscription = null;
-
-  this.subscription?.stop();
-  this.subscription = Meteor.subscribe('publish.categories');
-})
-
-Template.componentCategories.onDestroyed(function() {
-  this.subscription?.stop();
+  this.state = new ReactiveDict(null, {
+    categories: []
+  })
 });
 
-Template.componentCategories.helpers({
-  categories: function () {
-    return Categories.find({}).fetch();
-  }
+Template.componentCategories.onRendered(function () {
+  const self = this
+
+  this.autorun(function () {
+    const language = CurrentLocale.get();
+
+    console.log(language);
+    if (!language) {
+      return
+    }
+
+    LoadingLine.show()
+    Meteor.call('public.categories', { lang: language.slice(0, 2) }, function (_error, _result) {
+      LoadingLine.hide()
+
+      if (_error) {
+        ErrorHandler.show(_error);
+        return;
+      }
+
+      console.log(_result.categories);
+      self.state.set('categories', _result.categories)
+
+    });
+  });
 });

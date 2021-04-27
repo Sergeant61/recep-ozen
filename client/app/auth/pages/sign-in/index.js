@@ -20,7 +20,7 @@ Template.authPageSignIn.events({
       if (redirect) {
         FlowRouter.go(redirect);
       } else {
-        FlowRouter.go('/');
+        FlowRouter.go('public.home');
       }
     });
   }
