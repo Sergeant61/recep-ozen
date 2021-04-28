@@ -6,3 +6,10 @@ FlowRouter.route('/', {
     this.render('publicLayoutDefault', { page: 'publicPagehome' });
   }
 });
+
+FlowRouter.route('/blog/:id', {
+  name: 'public.blog',
+  action: function (params, queryParams) {
+    this.render('publicLayoutDefault', { page: 'publicPageBlog' });
+  }
+});

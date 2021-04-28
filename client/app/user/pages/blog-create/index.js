@@ -1,11 +1,4 @@
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic/build/ckeditor';
-// import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-// import ClassicEditor from '@ckeditor/ckeditor5-editor-classic';
-
-// import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
-
 Template.userPageBlogCreate.onCreated(function () {
-
   this.ckEditor = null;
 });
 
@@ -13,87 +6,195 @@ Template.userPageBlogCreate.onRendered(function () {
   const self = this;
 
   this.autorun(function () {
+
+    const language = CurrentLocale.get();
+
+    if (!language) {
+      return
+    }
+
     Meteor.setTimeout(function () {
-      ClassicEditor
-        .create(self.find('#brdBlogHtml'), {
-          // plugins: [Base64UploadAdapter],
-          // removePlugins: ['CKFinderUploadAdapter', 'CKFinder', 'EasyImage', 'Image', 'ImageCaption', 'ImageStyle', 'ImageToolbar', 'ImageUpload', 'MediaEmbed'],
-        })
-        .then(editor => {
-          self.ckEditor = editor;
-        })
-        .catch(error => {
-          console.error(error);
-        });
+
+      ClassicEditor.create(self.find('#brdBlogHtml'), {
+
+        toolbar: {
+          items: [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            '|',
+            'outdent',
+            'indent',
+            '|',
+            'imageUpload',
+            'blockQuote',
+            'insertTable',
+            'mediaEmbed',
+            'undo',
+            'redo'
+          ]
+        },
+        language: language.slice(0, 2),
+        image: {
+          toolbar: [
+            'imageTextAlternative',
+            'imageStyle:full',
+            'imageStyle:side'
+          ]
+        },
+        table: {
+          contentToolbar: [
+            'tableColumn',
+            'tableRow',
+            'mergeTableCells'
+          ]
+        },
+      }).then(editor => {
+        self.ckEditor = editor;
+      }).catch(error => {
+        console.error('Oops, something went wrong!');
+        console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+        console.warn('Build id: 24wli16rgyf0-nohdljl880ze');
+        console.error(error);
+      });
+
+      return
+      const watchdog = new CKSource.Watchdog();
+
+      watchdog.setCreator((element, config) => {
+        return CKSource.Editor.create(element, config)
+          .then(editor => {
+            self.ckEditor = editor;
+            return editor;
+          })
+      });
+
+      watchdog.setDestructor(editor => {
+        return editor.destroy();
+      });
+
+      watchdog.on('error', handleError);
+      watchdog.create(self.find('#brdBlogHtml'), {
+        toolbar: {
+          items: [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            '|',
+            'outdent',
+            'indent',
+            '|',
+            'imageInsert',
+            'blockQuote',
+            'insertTable',
+            'alignment',
+            'todoList',
+            'code',
+            '|',
+            'codeBlock',
+            'fontBackgroundColor',
+            'fontColor',
+            'fontSize',
+            'fontFamily',
+            'highlight',
+            'horizontalLine',
+            'underline',
+            'MathType',
+            'strikethrough',
+            'subscript',
+            'specialCharacters',
+            'ChemType',
+            'pageBreak',
+            'superscript',
+          ]
+        },
+        language: language.slice(0, 2),
+        image: {
+          toolbar: [
+            'imageTextAlternative',
+            'imageStyle:full',
+            'imageStyle:side',
+            'linkImage'
+          ]
+        },
+        table: {
+          contentToolbar: [
+            'tableColumn',
+            'tableRow',
+            'mergeTableCells',
+            'tableCellProperties',
+            'tableProperties'
+          ]
+        },
+      }).catch(handleError);
+
+      console.log(watchdog);
+
+      function handleError(error) {
+        console.error('Oops, something went wrong!');
+        console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+        console.warn('Build id: om7ij9rc7i8c-vj2m43e4samd');
+        console.error(error);
+      }
+
     }, 50);
   });
 });
 
 Template.userPageBlogCreate.events({
-  'submit form': function (event, template) {
+  'submit form#brdBlogCreate': function (event, template) {
     event.preventDefault();
     ErrorHandler.reset(template);
-    LoadingSection.show(template, '.brd-loading-section');
 
-    const currentSlug = AppUtil.currentSlug.get();
-    const salesSlug = AppUtil.salesSlug.get();
-    const name = event.target.name.value;
-    const description = template.ckEditor.getData();
-    const price = parseFloat(event.target.price.value);
-    const barcode = event.target.barcode.value;
-    const isActive = event.target.isActive.checked;
-    const categories = template.categories.get();
-    const images = template.images.get();
-    const extras = template.extras.get();
-    const variants = template.variants.get();
-    const _variants = variants.filter(function (variant) {
-      return variant.optionValueIds.length > 0
-    }).map(function (variant) {
-      delete variant.isNew;
-      return variant;
-    });
+    const title = event.target.title.value;
+    const description = event.target.description.value;
+    const seoTitle = event.target.seoTitle.value;
+    const seoDescription = event.target.seoDescription.value;
+    const seoKeywords = event.target.seoKeywords.value;
+    const html = template.ckEditor.getData();
+
+    console.log(template.ckEditor);
+    console.log(html);
 
     const obj = {
-      slug: currentSlug,
-      salesSlug: salesSlug,
+      blog: {
+        // parentCategoryId:parentCategoryId,
 
-      product: {
-        name: name,
-        description: description,
-        price: price,
-        barcode: barcode,
-        images: images,
-        isActive: isActive,
+        data: {
+          en: {
+            title: title,
+            description: description,
+            html: html
+          }
+        },
 
-        categoryIds: categories.map(function (category) {
-          return category._id
-        }),
-      },
+        seo: {
+          title: seoTitle,
+          keywords: seoKeywords,
+          description: seoDescription
+        },
 
-      extras: extras.map(function (extra) {
-        delete extra.isNew;
-        return extra;
-      }),
-
-      variants: _variants
+        status: 'visible'
+      }
     };
 
-    Meteor.call('whatsgoo.sales.products.create', obj, function (error, result) {
-      LoadingSection.hide(template, '.brd-loading-section');
+    LoadingLine.show()
+    Meteor.call('public.blogs.create', obj, function (error, result) {
+      LoadingLine.hide()
 
       if (error) {
         ErrorHandler.show(error, template);
         return;
       }
 
-      AppUtil.refreshTokens.set('products', Random.id());
-      template.modal.hide();
-      template.images.set([]);
-      template.extras.set([]);
-      template.variants.set([]);
-      template.categories.set([]);
-      event.target.reset();
-      template.ckEditor.setData('')
     });
   }
 });

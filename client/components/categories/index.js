@@ -10,13 +10,12 @@ Template.componentCategories.onRendered(function () {
   this.autorun(function () {
     const language = CurrentLocale.get();
 
-    console.log(language);
     if (!language) {
       return
     }
 
     LoadingLine.show()
-    Meteor.call('public.categories', { lang: language.slice(0, 2) }, function (_error, _result) {
+    Meteor.call('public.categories.list', { lang: language.slice(0, 2) }, function (_error, _result) {
       LoadingLine.hide()
 
       if (_error) {
