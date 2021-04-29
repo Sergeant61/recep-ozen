@@ -1,7 +1,9 @@
 Template.userPageBlogs.onCreated(function () {
   this.state = new ReactiveDict(null, {
     blogs: []
-  })
+  });
+
+  this.filtering = new ReactiveDict(null, {});
 });
 
 Template.userPageBlogs.onRendered(function () {
@@ -15,9 +17,14 @@ Template.userPageBlogs.onRendered(function () {
       return
     }
 
+    self.filtering.set('createdUserId', userId)
+    const filtering = self.filtering.all();
+
     const obj = {
       lang: language.slice(0, 2),
-      createdUserId: userId
+      options: {
+        filtering: filtering
+      }
     }
 
     LoadingLine.show()

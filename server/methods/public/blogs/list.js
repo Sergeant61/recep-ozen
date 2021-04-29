@@ -4,12 +4,11 @@ new ValidatedMethod({
   name: 'public.blogs.list',
   validate: new SimpleSchema({
     lang: String,
-    status: { type: String, optional: true },
-    createdUserId: { type: SimpleSchema.RegEx.Id, optional: true },
+    options: { type: QueryOptionsSchema, optional: true }
   }).validator(),
   run: function (data) {
 
-    const options = {
+    data.options = {
       fields: {
         _id: 1,
         status: 1,
@@ -18,19 +17,9 @@ new ValidatedMethod({
       }
     }
 
-    options.fields[`data.${data.lang}`] = 1
+    data.options.fields[`data.${data.lang}`] = 1
 
-    const obj = {}
-
-    if (data.status) {
-      obj.status = data.status
-    }
-
-    if (data.createdUserId) {
-      obj.createdUserId = data.createdUserId
-    }
-
-    const result = Fetch(Blogs, obj, options, 'blogs');
+    const result = Fetch(Blogs, {}, data.options, 'blogs');
 
     result.blogs = result.blogs.map(blog => {
       blog.data = blog.data[data.lang];

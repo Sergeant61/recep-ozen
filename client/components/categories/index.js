@@ -1,7 +1,7 @@
 Template.componentCategories.onCreated(function () {
   this.state = new ReactiveDict(null, {
     categories: []
-  })
+  });
 });
 
 Template.componentCategories.onRendered(function () {

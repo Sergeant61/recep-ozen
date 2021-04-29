@@ -29,6 +29,11 @@
         </div>
 
         <br>
+        <p>Select category</p>
+
+        {{> userComponentCategorySelect}}
+
+        <br>
         <p>Seo content</p>
 
         <div class="form-floating">
@@ -47,7 +52,10 @@
 
       <div class="col-sm-12 col-lg-8 mb-3">
         <div class="d-flex justify-content-between mb-2 align-items-center">
-          <span>Content</span> {{> userComponentSelectLanguage}}
+          <span>Content</span>
+          <div class="ms-auto d-flex">
+            {{> userComponentLanguageSelect}}
+          </div>
         </div>
         <div id="brdBlogHtml"></div>
       </div>

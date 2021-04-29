@@ -4,10 +4,10 @@ new ValidatedMethod({
   name: 'public.categories.list',
   validate: new SimpleSchema({
     lang: String,
+    options: { type: QueryOptionsSchema, optional: true }
   }).validator(),
   run: function (data) {
-
-    const options = {
+    data.options = {
       fields: {
         _id: 1,
         status: 1,
@@ -16,9 +16,9 @@ new ValidatedMethod({
       }
     }
 
-    options.fields[`data.${data.lang}`] = 1
+    data.options.fields[`data.${data.lang}`] = 1
 
-    const result = Fetch(Categories, { status: 'visible', parentCategoryId: { $exists: false } }, options, 'categories');
+    const result = Fetch(Categories, { status: 'visible', parentCategoryId: { $exists: false } }, data.options, 'categories');
 
     result.categories = result.categories.map(category => {
       category.data = category.data[data.lang];

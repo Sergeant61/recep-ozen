@@ -1,3 +1,5 @@
+import ClassicEditor from '/imports/js/ckeditor/ckeditor.js';
+
 Template.userPageBlogCreate.onCreated(function () {
   this.ckEditor = null;
 });
@@ -16,7 +18,6 @@ Template.userPageBlogCreate.onRendered(function () {
     Meteor.setTimeout(function () {
 
       ClassicEditor.create(self.find('#brdBlogHtml'), {
-
         toolbar: {
           items: [
             'heading',
@@ -61,89 +62,6 @@ Template.userPageBlogCreate.onRendered(function () {
         console.warn('Build id: 24wli16rgyf0-nohdljl880ze');
         console.error(error);
       });
-
-      return
-      const watchdog = new CKSource.Watchdog();
-
-      watchdog.setCreator((element, config) => {
-        return CKSource.Editor.create(element, config)
-          .then(editor => {
-            self.ckEditor = editor;
-            return editor;
-          })
-      });
-
-      watchdog.setDestructor(editor => {
-        return editor.destroy();
-      });
-
-      watchdog.on('error', handleError);
-      watchdog.create(self.find('#brdBlogHtml'), {
-        toolbar: {
-          items: [
-            'heading',
-            '|',
-            'bold',
-            'italic',
-            'link',
-            'bulletedList',
-            'numberedList',
-            '|',
-            'outdent',
-            'indent',
-            '|',
-            'imageInsert',
-            'blockQuote',
-            'insertTable',
-            'alignment',
-            'todoList',
-            'code',
-            '|',
-            'codeBlock',
-            'fontBackgroundColor',
-            'fontColor',
-            'fontSize',
-            'fontFamily',
-            'highlight',
-            'horizontalLine',
-            'underline',
-            'MathType',
-            'strikethrough',
-            'subscript',
-            'specialCharacters',
-            'ChemType',
-            'pageBreak',
-            'superscript',
-          ]
-        },
-        language: language.slice(0, 2),
-        image: {
-          toolbar: [
-            'imageTextAlternative',
-            'imageStyle:full',
-            'imageStyle:side',
-            'linkImage'
-          ]
-        },
-        table: {
-          contentToolbar: [
-            'tableColumn',
-            'tableRow',
-            'mergeTableCells',
-            'tableCellProperties',
-            'tableProperties'
-          ]
-        },
-      }).catch(handleError);
-
-      console.log(watchdog);
-
-      function handleError(error) {
-        console.error('Oops, something went wrong!');
-        console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-        console.warn('Build id: om7ij9rc7i8c-vj2m43e4samd');
-        console.error(error);
-      }
 
     }, 50);
   });

@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
-    "@ckeditor/ckeditor5-build-classic": "^27.1.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@popperjs/core": "^2.6.0",
     "array-query": "^0.1.2",
