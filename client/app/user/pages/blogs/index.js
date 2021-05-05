@@ -12,19 +12,19 @@ Template.userPageBlogs.onRendered(function () {
   this.autorun(function () {
     const language = CurrentLocale.get();
     const userId = Meteor.userId();
+    const filtering = self.filtering.all();
 
     if (!language || !userId) {
       return
     }
 
-    self.filtering.set('createdUserId', userId)
-    const filtering = self.filtering.all();
-
+    filtering.createdUserId = userId;
+    
     const obj = {
       lang: language.slice(0, 2),
       options: {
-        filtering: filtering
-      }
+        filtering: filtering,
+      },
     }
 
     LoadingLine.show()

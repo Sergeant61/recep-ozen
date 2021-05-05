@@ -5,7 +5,6 @@ Template.userComponentCategorySelect.onCreated(function () {
   });
 
   this.filtering = new ReactiveDict(null, {});
-
 });
 
 Template.userComponentCategorySelect.onRendered(function () {
@@ -22,12 +21,11 @@ Template.userComponentCategorySelect.onRendered(function () {
     if (parentId) {
       self.filtering.set('parentCategoryId', parentId)
     }
-    const filtering = self.filtering.all();
 
     const obj = {
       lang: language.slice(0, 2),
       options: {
-        filtering: filtering
+        filtering: self.filtering.all()
       }
     }
 
@@ -53,5 +51,6 @@ Template.userComponentCategorySelect.events({
     const categoryId = event.target.value || null;
     template.state.set('categoryId', categoryId)
 
+    console.log(categoryId);
   }
 });

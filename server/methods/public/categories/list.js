@@ -7,18 +7,18 @@ new ValidatedMethod({
     options: { type: QueryOptionsSchema, optional: true }
   }).validator(),
   run: function (data) {
-    data.options = {
-      fields: {
-        _id: 1,
-        status: 1,
-        updatedAt: 1,
-        createdAt: 1,
-      }
+    data.options = data.options || {};
+
+    data.options.fields = {
+      _id: 1,
+      status: 1,
+      updatedAt: 1,
+      createdAt: 1,
     }
 
     data.options.fields[`data.${data.lang}`] = 1
 
-    const result = Fetch(Categories, { status: 'visible', parentCategoryId: { $exists: false } }, data.options, 'categories');
+    const result = Fetch(Categories, {}, data.options, 'categories');
 
     result.categories = result.categories.map(category => {
       category.data = category.data[data.lang];

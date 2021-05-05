@@ -7,14 +7,13 @@ new ValidatedMethod({
     options: { type: QueryOptionsSchema, optional: true }
   }).validator(),
   run: function (data) {
+    data.options = data.options || {}
 
-    data.options = {
-      fields: {
-        _id: 1,
-        status: 1,
-        updatedAt: 1,
-        createdAt: 1,
-      }
+    data.options.fields = {
+      _id: 1,
+      status: 1,
+      updatedAt: 1,
+      createdAt: 1,
     }
 
     data.options.fields[`data.${data.lang}`] = 1
