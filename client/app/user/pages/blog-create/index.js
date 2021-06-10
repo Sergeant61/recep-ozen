@@ -1,6 +1,10 @@
 import ClassicEditor from '/imports/js/ckeditor/ckeditor.js';
 
 Template.userPageBlogCreate.onCreated(function () {
+  this.state = new ReactiveDict(null, {
+    selectLangCodes: ['en', 'tr'],
+  });
+
   this.ckEditor = null;
 });
 
@@ -112,7 +116,6 @@ Template.userPageBlogCreate.events({
         ErrorHandler.show(error, template);
         return;
       }
-
     });
   }
 });

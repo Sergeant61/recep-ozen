@@ -5,13 +5,13 @@
 
       {{#with _categories}}
         <div class="form-floating">
-          <select class="form-select brd-categories" id="floatingSelect">
+          <select class="form-select brd-categories" id="brdCategories_{{../code}}">
             <option disabled>Select Category</option>
             {{#each this}}
               <option value="{{_id}}">{{data.title}}</option>
             {{/each}}
           </select>
-          <label for="floatingSelect">Works with selects</label>
+          <label for="brdCategories_{{../code}}">Works with selects</label>
         </div>
       {{/with}}
 
