@@ -7,6 +7,13 @@ FlowRouter.route('/', {
   }
 });
 
+FlowRouter.route('/todo', {
+  name: 'public.todo',
+  action: function (params, queryParams) {
+    this.render('publicLayoutDefault', { page: 'publicPageTodo' });
+  }
+});
+
 FlowRouter.route('/blog/:id', {
   name: 'public.blog',
   action: function (params, queryParams) {

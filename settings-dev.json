@@ -1,5 +1,5 @@
 {
-  "rootUrl": "http://rec.bordo.io:4000",
+  "rootUrl": "http://rec.bordo.io:4500",
 
   "slack":{
     "webhookUrl":""
